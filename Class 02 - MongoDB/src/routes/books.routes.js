@@ -8,7 +8,7 @@ router.get("", BookController.getBooks);
 router.get("/:id", BookController.getBook);
 router.get("/author/:author", BookController.getBookByAuthor);
 router.post("", bookValidator, BookController.createBook);
-router.patch("/:id", bookValidator, BookController.updateBook);
+router.patch("/:id", BookController.updateBook);
 router.delete("/:id", BookController.deleteBook);
 router.delete("", BookController.deleteAllBooks);
 
