@@ -1,0 +1,38 @@
+[
+  {
+    "name": "AMD Ryzen 9 7950X",
+    "description": "The AMD Ryzen 9 7950X boasts 16 cores and 32 threads, making it a powerhouse for gaming, streaming, and content creation. With its Zen 4 architecture, it offers significant performance improvements over previous generations.",
+    "price": 799.99,
+    "quantity": 100,
+    "review": [],
+    "rating": [],
+    "category": "CPU"
+  },
+  {
+    "name": "Intel Core i9-12900K",
+    "description": "Intel's Core i9-12900K features a hybrid architecture with 8 Performance-cores and 8 Efficient-cores, offering a balance of power and efficiency. It's ideal for demanding applications and gaming at the highest settings.",
+    "price": 589.99,
+    "quantity": 150,
+    "review": [],
+    "rating": [],
+    "category": "CPU"
+  },
+  {
+    "name": "AMD Ryzen 7 7700X",
+    "description": "With 8 cores and 16 threads, the Ryzen 7 7700X is a high-performance CPU that's great for gaming and professional workloads. It offers high speeds and efficiency, thanks to AMD's Zen 4 architecture.",
+    "price": 399.99,
+    "quantity": 120,
+    "review": [],
+    "rating": [],
+    "category": "CPU"
+  },
+  {
+    "name": "Intel Core i7-12700K",
+    "description": "The Core i7-12700K is a versatile and powerful CPU with 12 cores (8P+4E) and 20 threads, suited for high-end gaming and multitasking. Its performance per dollar makes it an attractive option for gamers and creators alike.",
+    "price": 409.99,
+    "quantity": 130,
+    "review": [],
+    "rating": [],
+    "category": "CPU"
+  }
+]

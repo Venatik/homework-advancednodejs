@@ -1,0 +1,38 @@
+[
+  {
+    "name": "NVIDIA GeForce RTX 4090",
+    "description": "The NVIDIA GeForce RTX 4090 is a flagship GPU based on the Ada Lovelace architecture, offering unparalleled performance for gaming and creative work.",
+    "price": 1599.99,
+    "quantity": 120,
+    "review": [],
+    "rating": [],
+    "category": "GPU"
+  },
+  {
+    "name": "AMD Radeon RX 7900 XTX",
+    "description": "AMD's top-of-the-line GPU, the Radeon RX 7900 XTX, competes directly with NVIDIA's best, offering excellent performance at a slightly lower price point.",
+    "price": 999.99,
+    "quantity": 150,
+    "review": [],
+    "rating": [],
+    "category": "GPU"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080",
+    "description": "A step down from the flagship, the RTX 4080 still delivers formidable performance for gaming and professional applications, making it a popular choice for enthusiasts.",
+    "price": 1199.99,
+    "quantity": 200,
+    "review": [],
+    "rating": [],
+    "category": "GPU"
+  },
+  {
+    "name": "AMD Radeon RX 7900 XT",
+    "description": "The Radeon RX 7900 XT offers great performance for its price, making it an attractive option for gamers looking to get high-end performance without breaking the bank.",
+    "price": 899.99,
+    "quantity": 180,
+    "review": [],
+    "rating": [],
+    "category": "GPU"
+  }
+]
