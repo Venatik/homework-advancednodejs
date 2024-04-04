@@ -8,7 +8,8 @@ const router = Router();
 
 router.get("/", CartController.getAllCart);
 router.get("/:id", CartController.getCartProduct);
-router.post("/:id", CartController.addToCart);
+router.post("/:cartId/:productId", CartController.addToCart);
+router.delete("/carts/:id", CartController.deleteCart);
 router.delete("/:id", CartController.deleteCartProduct);
 
 export default router;

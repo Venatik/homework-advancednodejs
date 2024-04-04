@@ -4,8 +4,8 @@ import Cart from "../models/cart.model.js";
 import Product from "../models/product.model.js";
 
 export default class CartService {
-    static async add(productId) {
-        let cart = await Cart.findOne();
+    static async add(cartId, productId) {
+        let cart = await Cart.findById(cartId);
         if (!cart) {
             cart = new Cart();
         }
@@ -17,7 +17,7 @@ export default class CartService {
         }
 
         product.quantity -= 1;
-        if (product.quantity < 0) {
+        if (product.quantity === 0) {
             throw new Error("Product out of stock");
         }
 
@@ -29,17 +29,16 @@ export default class CartService {
     }
 
     static async getAll() {
-        const cart = await Cart.findOne().populate("products");
-        return cart.products;
+        const carts = await Cart.find().populate("products");
+        return carts;
     }
 
-    static async getById(productId) {
-        const cart = await Cart.findOne().populate("products");
-        const product = cart.products.find(product => product.id.toString() === productId);
-        if (!product) {
-            throw new Error("Product not found");
+    static async getById(cartId) {
+        const cart = await Cart.findById(cartId).populate("products");
+        if (!cart) {
+            throw new Error("Cart not found");
         }
-        return product;
+        return cart;
     }
 
     static async delete(productId) {
@@ -50,6 +49,15 @@ export default class CartService {
 
         cart.products = cart.products.filter(product => product._id.toString() !== productId);
         await cart.save();
+        return cart;
+    }
+
+    static async deleteCart(cartId) {
+        const cart = await Cart.findByIdAndDelete(cartId);
+        if (!cart) {
+            throw new Error("Cart not found");
+        }
+
         return cart;
     }
 };
