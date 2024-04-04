@@ -12,6 +12,6 @@ const cartSchema = new Schema({
     }]
 }, { timestamps: true });
 
-const Cart = model("cart", cartSchema, "cart");
+const Cart = model("cart", cartSchema, "carts");
 
 export default Cart;

@@ -35,8 +35,9 @@ export default class CartController {
 
     static async deleteCartProduct(req, res) {
         try {
-            const productId = req.params.id;
-            const cart = await CartService.delete(productId);
+            const productId = req.params.productId;
+            const cartId = req.params.cartId;
+            const cart = await CartService.delete(cartId, productId);
             res.status(200).send(cart);
         } catch (error) {
             res.status(400).send({ message: error.message });

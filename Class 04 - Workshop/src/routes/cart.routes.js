@@ -10,6 +10,6 @@ router.get("/", CartController.getAllCart);
 router.get("/:id", CartController.getCartProduct);
 router.post("/:cartId/:productId", CartController.addToCart);
 router.delete("/carts/:id", CartController.deleteCart);
-router.delete("/:id", CartController.deleteCartProduct);
+router.delete("/:cartId/:productId", CartController.deleteCartProduct);
 
 export default router;

@@ -41,8 +41,8 @@ export default class CartService {
         return cart;
     }
 
-    static async delete(productId) {
-        const cart = await Cart.findOne();
+    static async delete(cartId, productId) {
+        const cart = await Cart.findById(cartId);
         if (!cart) {
             throw new Error("Cart is empty");
         }
