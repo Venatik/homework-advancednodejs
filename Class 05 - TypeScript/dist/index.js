@@ -83,7 +83,6 @@ function evenOrOdd(number) {
     }
 }
 console.log(evenOrOdd(11));
-// Exercise9:
 class Calculator {
     add(a, b) {
         return a + b;
@@ -103,3 +102,6 @@ class Calculator {
 }
 const calc = new Calculator();
 console.log(calc.add(2, 2));
+console.log(calc.subtract(123123, 5421));
+console.log(calc.multiply(5, 5));
+console.log(calc.divide(10, 2));
