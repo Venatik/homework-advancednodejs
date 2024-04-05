@@ -22,7 +22,7 @@ let peopleArray: Person[] = [
 
 function filterByProperty(people: Person[], property: string, value: string) {
   return people.filter(person => person[property as keyof Person] == value);
-  // samo person[property] ne rabotese, googlav do resenie i stignav do ova
+  // samo person[property] ne rabotese, stignav do ova resenie
 }
 
 console.log(filterByProperty(peopleArray, "gender", "male"));
