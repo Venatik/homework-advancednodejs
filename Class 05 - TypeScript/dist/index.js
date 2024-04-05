@@ -12,7 +12,7 @@ let peopleArray = [
 ];
 function filterByProperty(people, property, value) {
     return people.filter(person => person[property] == value);
-    // samo person[property] ne rabotese, googlav do resenie i stignav do ova
+    // samo person[property] ne rabotese, stignav do ova resenie
 }
 console.log(filterByProperty(peopleArray, "gender", "male"));
 console.log(filterByProperty(peopleArray, "age", "35"));

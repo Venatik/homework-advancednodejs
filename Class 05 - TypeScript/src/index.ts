@@ -20,8 +20,12 @@ let peopleArray: Person[] = [
   { name: "Jane", age: 25, gender: "female" },
 ];
 
-function filterByProperty(people: Person[], property: string, value: string) {
-  return people.filter(person => person[property as keyof Person] == value);
+function filterByProperty(
+  people: Person[],
+  property: keyof Person,
+  value: string
+) {
+  return people.filter(person => person[property] == value);
   // samo person[property] ne rabotese, stignav do ova resenie
 }
 
