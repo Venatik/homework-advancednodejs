@@ -63,6 +63,7 @@ class Car extends Vehicle {
 }
 
 const myCar = new Car(1, 1234, "Opel", "Corsa", 2019, 7000, 5);
+myCar.registrationNum = 2345;
 myCar.drive();
 myCar.displayDetails();
 console.log(myCar.calculateDeprecation());
