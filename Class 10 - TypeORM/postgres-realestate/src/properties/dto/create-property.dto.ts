@@ -15,4 +15,7 @@ export class CreatePropertyDto {
 
   @IsString()
   readonly description: string;
+
+  @IsNumber()
+  readonly agentId: number;
 }

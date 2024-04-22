@@ -5,6 +5,7 @@ import { PropertiesModule } from './properties/properties.module';
 import { AgentsModule } from './agents/agents.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
+import { ReservationsModule } from './reservations/reservations.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DatabaseModule } from './database/database.module';
     PropertiesModule,
     AgentsModule,
     DatabaseModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -41,6 +41,12 @@ export class AgentsService {
   }
 
   async remove(id: number): Promise<void> {
-    await this.agentRepository.delete(id);
+    const agent = await this.agentRepository.findOneBy({ id });
+
+    if (!agent) {
+      throw new NotFoundException(`Agent with ID "${id}" not found`);
+    }
+
+    await this.agentRepository.delete(agent);
   }
 }
