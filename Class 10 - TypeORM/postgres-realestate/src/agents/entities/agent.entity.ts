@@ -4,6 +4,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -24,9 +25,12 @@ export class Agent {
   @Column()
   agency: string;
 
-  @ManyToOne(() => Property, (property) => property.agents, { cascade: true })
-  @JoinColumn({ name: 'propertyId' })
-  property: Property;
+  // @ManyToOne(() => Property, (property) => property.agents, { cascade: true })
+  // @JoinColumn({ name: 'propertyId' })
+  // property: Property;
+
+  @OneToMany(() => Property, (property) => property.agent, { cascade: true })
+  properties: Property[];
 
   @Column()
   propertyId: number;

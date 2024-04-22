@@ -1,5 +1,13 @@
 import { Agent } from 'src/agents/entities/agent.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Property {
@@ -21,6 +29,13 @@ export class Property {
   @Column()
   description: string;
 
-  @OneToMany(() => Agent, (agent) => agent.property)
-  agents: Agent[];
+  @Column({ nullable: true })
+  agentId: number;
+
+  // @OneToMany(() => Agent, (agent) => agent.property)
+  // agents: Agent[];
+
+  @ManyToOne(() => Agent, (agent) => agent.properties)
+  @JoinColumn({ name: 'agentId' })
+  agent: Agent;
 }

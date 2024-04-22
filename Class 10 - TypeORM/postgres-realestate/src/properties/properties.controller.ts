@@ -35,12 +35,12 @@ export class PropertiesController {
   update(
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,
-  ) {
+  ): Promise<Property> {
     return this.propertiesService.update(+id, updatePropertyDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: string): Promise<void> {
     return this.propertiesService.remove(+id);
   }
 }
