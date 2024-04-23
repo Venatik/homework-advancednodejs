@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -6,7 +6,7 @@ import { Agent } from './entities/agent.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class AgentsService {
+export class AgentService {
   constructor(
     @InjectRepository(Agent)
     private agentRepository: Repository<Agent>,
@@ -17,14 +17,7 @@ export class AgentsService {
   }
 
   async findOne(id: number): Promise<Agent> {
-    try {
-      return this.agentRepository.findOneByOrFail({ id });
-    } catch (error) {
-      if (error.name === 'EntityNotFoundError') {
-        throw new NotFoundException(`Agent with ID ${id} not found`);
-      }
-      throw error;
-    }
+    return this.agentRepository.findOneBy({ id });
   }
 
   async create(createAgentDto: CreateAgentDto): Promise<Agent> {
@@ -41,12 +34,6 @@ export class AgentsService {
   }
 
   async remove(id: number): Promise<void> {
-    const agent = await this.agentRepository.findOneBy({ id });
-
-    if (!agent) {
-      throw new NotFoundException(`Agent with ID "${id}" not found`);
-    }
-
-    await this.agentRepository.delete(agent);
+    await this.agentRepository.delete(id);
   }
 }

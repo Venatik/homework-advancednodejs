@@ -1,11 +1,11 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PropertiesModule } from './properties/properties.module';
-import { AgentsModule } from './agents/agents.module';
+import { AgentModule } from './agent/agent.module';
+import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './database/database.module';
 import { APP_PIPE } from '@nestjs/core';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -13,8 +13,8 @@ import { APP_PIPE } from '@nestjs/core';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    PropertiesModule,
-    AgentsModule,
+    AgentModule,
+    PropertyModule,
     DatabaseModule,
   ],
   controllers: [AppController],

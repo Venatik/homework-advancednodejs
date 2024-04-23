@@ -1,15 +1,19 @@
-import { IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateAgentDto {
+  @IsNotEmpty()
   @IsString()
   readonly name: string;
 
+  @IsNotEmpty()
   @IsString()
   readonly email: string;
 
+  @IsNotEmpty()
   @IsString()
-  readonly phoneNumber: string;
+  readonly phone: string;
 
+  @IsNotEmpty()
   @IsString()
   readonly agency: string;
 }
