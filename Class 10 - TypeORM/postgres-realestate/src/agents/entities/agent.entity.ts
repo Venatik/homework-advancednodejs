@@ -29,9 +29,9 @@ export class Agent {
   // @JoinColumn({ name: 'propertyId' })
   // property: Property;
 
-  @OneToMany(() => Property, (property) => property.agent, { cascade: true })
+  @OneToMany(() => Property, (property) => property.agent, {
+    cascade: true,
+    eager: true,
+  })
   properties: Property[];
-
-  @Column()
-  propertyId: number;
 }

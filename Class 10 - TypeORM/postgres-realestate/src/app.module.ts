@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PropertiesModule } from './properties/properties.module';
 import { AgentsModule } from './agents/agents.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
-import { ReservationsModule } from './reservations/reservations.module';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -16,9 +16,19 @@ import { ReservationsModule } from './reservations/reservations.module';
     PropertiesModule,
     AgentsModule,
     DatabaseModule,
-    ReservationsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+      useValue: {
+        whitelist: true,
+        transform: true,
+        forbidNonWhitelisted: true,
+      },
+    },
+  ],
 })
 export class AppModule {}

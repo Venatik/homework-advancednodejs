@@ -29,9 +29,6 @@ export class Property {
   @Column()
   description: string;
 
-  @Column({ nullable: true })
-  agentId: number;
-
   // @OneToMany(() => Agent, (agent) => agent.property)
   // agents: Agent[];
 

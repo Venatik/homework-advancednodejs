@@ -14,7 +14,7 @@ export class PropertiesService {
 
   async findAll(): Promise<Property[]> {
     return this.propertyRepository.find({
-      relations: { agent: true },
+      relations: ['agent'],
     });
   }
 
