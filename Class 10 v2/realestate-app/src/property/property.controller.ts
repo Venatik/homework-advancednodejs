@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
@@ -25,8 +26,8 @@ export class PropertyController {
     name: 'location',
     required: false,
   })
-  findAll() {
-    return this.propertyService.findAll();
+  findAll(@Query('type') type: string, @Query('location') location: string) {
+    return this.propertyService.findAll(type, location);
   }
 
   @Get(':id')

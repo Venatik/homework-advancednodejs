@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AgentService } from './agent.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
@@ -25,8 +26,8 @@ export class AgentController {
     name: 'agency',
     required: false,
   })
-  findAll() {
-    return this.agentService.findAll();
+  findAll(@Query('name') name: string, @Query('agency') agency: string) {
+    return this.agentService.findAll(name, agency);
   }
 
   @Get(':id')

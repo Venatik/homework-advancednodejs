@@ -12,8 +12,13 @@ export class PropertyService {
     private propertyRepository: Repository<Property>,
   ) {}
 
-  async findAll(): Promise<Property[]> {
-    return await this.propertyRepository.find();
+  async findAll(type?: string, location?: string): Promise<Property[]> {
+    const where = {};
+
+    if (type) where['type'] = type;
+    if (location) where['location'] = location;
+
+    return await this.propertyRepository.find({ where });
   }
 
   async findOne(id: number): Promise<Property> {

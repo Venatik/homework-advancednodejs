@@ -15,8 +15,13 @@ export class AgentService {
     private propertyRepository: Repository<Property>,
   ) {}
 
-  async findAll(): Promise<Agent[]> {
-    return this.agentRepository.find();
+  async findAll(name?: string, agency?: string): Promise<Agent[]> {
+    const where = {};
+
+    if (name) where['name'] = name;
+    if (agency) where['agency'] = agency;
+
+    return this.agentRepository.find({ where });
   }
 
   async findOne(id: number): Promise<Agent> {
