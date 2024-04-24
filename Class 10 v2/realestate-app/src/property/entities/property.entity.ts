@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Agent } from 'src/agent/entities/agent.entity';
 
 @Entity()
@@ -19,5 +25,9 @@ export class Property {
   location: string;
 
   @ManyToOne(() => Agent, (agent) => agent.properties)
+  @JoinColumn({ name: 'agentId' })
   agent: Agent;
+
+  @Column()
+  agentId: number;
 }

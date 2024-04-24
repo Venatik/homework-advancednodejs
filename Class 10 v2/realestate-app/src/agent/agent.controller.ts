@@ -10,12 +10,21 @@ import {
 import { AgentService } from './agent.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
+import { ApiQuery } from '@nestjs/swagger';
 
 @Controller('agent')
 export class AgentController {
   constructor(private readonly agentService: AgentService) {}
 
   @Get()
+  @ApiQuery({
+    name: 'name',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'agency',
+    required: false,
+  })
   findAll() {
     return this.agentService.findAll();
   }

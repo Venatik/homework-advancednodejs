@@ -1,26 +1,42 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Property } from './entities/property.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PropertyService {
-  create(createPropertyDto: CreatePropertyDto) {
-    return 'This action adds a new property';
+  constructor(
+    @InjectRepository(Property)
+    private propertyRepository: Repository<Property>,
+  ) {}
+
+  async findAll(): Promise<Property[]> {
+    return await this.propertyRepository.find();
   }
 
-  findAll() {
-    return `This action returns all property`;
+  async findOne(id: number): Promise<Property> {
+    return this.propertyRepository.findOneBy({ id });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} property`;
+  async create(createPropertyDto: CreatePropertyDto): Promise<Property> {
+    const property = this.propertyRepository.create(createPropertyDto);
+    await this.propertyRepository.save(property);
+    return property;
   }
 
-  update(id: number, updatePropertyDto: UpdatePropertyDto) {
-    return `This action updates a #${id} property`;
+  async update(
+    id: number,
+    updatePropertyDto: UpdatePropertyDto,
+  ): Promise<Property> {
+    let property = await this.propertyRepository.findOneBy({ id });
+    property = this.propertyRepository.merge(property, updatePropertyDto);
+    await this.propertyRepository.save(property);
+    return property;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} property`;
+  async remove(id: number): Promise<void> {
+    await this.propertyRepository.delete(id);
   }
 }

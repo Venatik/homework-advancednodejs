@@ -1,18 +1,30 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { ApiQuery } from '@nestjs/swagger';
 
 @Controller('property')
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService) {}
 
-  @Post()
-  create(@Body() createPropertyDto: CreatePropertyDto) {
-    return this.propertyService.create(createPropertyDto);
-  }
-
   @Get()
+  @ApiQuery({
+    name: 'type',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'location',
+    required: false,
+  })
   findAll() {
     return this.propertyService.findAll();
   }
@@ -22,8 +34,16 @@ export class PropertyController {
     return this.propertyService.findOne(+id);
   }
 
+  @Post()
+  create(@Body() createPropertyDto: CreatePropertyDto) {
+    return this.propertyService.create(createPropertyDto);
+  }
+
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePropertyDto: UpdatePropertyDto,
+  ) {
     return this.propertyService.update(+id, updatePropertyDto);
   }
 

@@ -1,15 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Agent } from './entities/agent.entity';
 import { Repository } from 'typeorm';
+import { Property } from 'src/property/entities/property.entity';
 
 @Injectable()
 export class AgentService {
   constructor(
     @InjectRepository(Agent)
     private agentRepository: Repository<Agent>,
+    @InjectRepository(Property)
+    private propertyRepository: Repository<Property>,
   ) {}
 
   async findAll(): Promise<Agent[]> {
@@ -34,6 +37,13 @@ export class AgentService {
   }
 
   async remove(id: number): Promise<void> {
-    await this.agentRepository.delete(id);
+    const agent = await this.agentRepository.findOne({
+      where: { id },
+      relations: ['properties'],
+    });
+    if (agent) {
+      await this.propertyRepository.remove(agent.properties);
+      await this.agentRepository.delete(id);
+    }
   }
 }
