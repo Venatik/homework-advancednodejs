@@ -6,6 +6,7 @@ import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { DatabaseModule } from './database/database.module';
+import { AgentProfilesModule } from './agent-profiles/agent-profiles.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { DatabaseModule } from './database/database.module';
     AgentModule,
     PropertyModule,
     DatabaseModule,
+    AgentProfilesModule,
   ],
   controllers: [AppController],
   providers: [

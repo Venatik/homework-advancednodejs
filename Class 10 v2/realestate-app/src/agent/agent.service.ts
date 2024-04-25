@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Agent } from './entities/agent.entity';
 import { Repository } from 'typeorm';
 import { Property } from 'src/property/entities/property.entity';
+import { AgentProfile } from 'src/agent-profiles/entities/agent-profile.entity';
 
 @Injectable()
 export class AgentService {
@@ -25,7 +26,10 @@ export class AgentService {
   }
 
   async findOne(id: number): Promise<Agent> {
-    return this.agentRepository.findOneBy({ id });
+    return this.agentRepository.findOne({
+      where: { id },
+      relations: ['profile'],
+    });
   }
 
   async create(createAgentDto: CreateAgentDto): Promise<Agent> {

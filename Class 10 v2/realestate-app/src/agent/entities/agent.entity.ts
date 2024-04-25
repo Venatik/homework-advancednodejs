@@ -1,5 +1,13 @@
+import { AgentProfile } from 'src/agent-profiles/entities/agent-profile.entity';
 import { Property } from 'src/property/entities/property.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Agent {
@@ -20,4 +28,8 @@ export class Agent {
 
   @OneToMany(() => Property, (property) => property.agent, { cascade: true })
   properties: Property[];
+
+  @OneToOne(() => AgentProfile, (profile) => profile.agent, { cascade: true })
+  @JoinColumn()
+  profile: AgentProfile;
 }

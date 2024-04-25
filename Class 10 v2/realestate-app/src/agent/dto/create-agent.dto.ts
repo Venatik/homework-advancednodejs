@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsNotEmpty,
+  IsObject,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import { CreateAgentProfileDto } from 'src/agent-profiles/dto/create-agent-profile.dto';
 
 export class CreateAgentDto {
   @IsNotEmpty()
@@ -16,4 +23,9 @@ export class CreateAgentDto {
   @IsNotEmpty()
   @IsString()
   readonly agency: string;
+
+  @ValidateNested()
+  @IsObject()
+  @Type(() => CreateAgentProfileDto)
+  profile: CreateAgentProfileDto;
 }
