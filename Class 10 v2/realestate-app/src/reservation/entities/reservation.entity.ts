@@ -21,7 +21,7 @@ export class Reservation {
   @Column()
   customerName: string;
 
-  @Column({ type: 'date', nullable: true })
+  @Column({ type: 'date', nullable: true }) // nullable za testiranje
   checkIn: Date;
 
   @Column({ type: 'date', nullable: true })
