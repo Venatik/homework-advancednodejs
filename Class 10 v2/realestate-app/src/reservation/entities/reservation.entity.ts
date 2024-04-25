@@ -21,10 +21,10 @@ export class Reservation {
   @Column()
   customerName: string;
 
-  @Column()
+  @Column({ type: 'date', nullable: true })
   checkIn: Date;
 
-  @Column()
+  @Column({ type: 'date', nullable: true })
   checkOut: Date;
 
   @Column({ type: 'enum', enum: ReservationStatus })
