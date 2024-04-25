@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { DatabaseModule } from './database/database.module';
 import { AgentProfilesModule } from './agent-profiles/agent-profiles.module';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AgentProfilesModule } from './agent-profiles/agent-profiles.module';
     PropertyModule,
     DatabaseModule,
     AgentProfilesModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [

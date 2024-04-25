@@ -18,11 +18,17 @@ export class PropertyService {
     if (type) where['type'] = type;
     if (location) where['location'] = location;
 
-    return await this.propertyRepository.find({ where });
+    return await this.propertyRepository.find({
+      where,
+      relations: ['reservations'],
+    });
   }
 
   async findOne(id: number): Promise<Property> {
-    return this.propertyRepository.findOneBy({ id });
+    return this.propertyRepository.findOne({
+      where: { id },
+      relations: ['reservations'],
+    });
   }
 
   async create(createPropertyDto: CreatePropertyDto): Promise<Property> {
