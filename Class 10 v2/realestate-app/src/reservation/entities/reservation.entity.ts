@@ -14,7 +14,9 @@ export class Reservation {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Property, (property) => property.reservations)
+  @ManyToOne(() => Property, (property) => property.reservations, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'propertyId' })
   property: Property;
 
