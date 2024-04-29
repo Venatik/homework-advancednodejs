@@ -76,6 +76,7 @@ export class PropertyController {
     description: 'Property updated successfully.',
   })
   @Patch(':id')
+  @Roles(Role.Admin)
   update(
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,

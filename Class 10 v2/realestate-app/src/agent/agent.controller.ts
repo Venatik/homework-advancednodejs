@@ -76,6 +76,7 @@ export class AgentController {
     description: 'Agent updated successfully.',
   })
   @Patch(':id')
+  @Roles(Role.Admin)
   update(@Param('id') id: string, @Body() updateAgentDto: UpdateAgentDto) {
     return this.agentService.update(+id, updateAgentDto);
   }
