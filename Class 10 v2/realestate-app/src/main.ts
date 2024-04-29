@@ -11,6 +11,7 @@ async function bootstrap() {
     .setTitle('Real Estate API')
     .setDescription('Real Estate Management App')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
