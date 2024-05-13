@@ -22,9 +22,10 @@ Welcome to an exciting workshop where we'll build a robust API for a dynamic blo
    - Establish a one-to-many relationship with Post entity.
 3. **Create user.entity.ts:**
    - Define attributes like id, email, password and role.
-   - Establish a one-to-one relationship with the User entity.
+   - Establish a one-to-one relationship with the userProfile entity.
    - Ensure that deleting a user cascades to delete associated posts.
 4. **Create comment.entity.ts:**
+
    - Define attributes like id, content, createdAt, and updatedAt.
    - Establish many-to-one relationship with Post and UserProfile entities.
    - Ensure that deleting a post cascades to delete associated comments.
