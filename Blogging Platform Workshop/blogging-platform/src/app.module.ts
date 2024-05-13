@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
-import { PostModule } from './post/post.module';
 import { PostsModule } from './posts/posts.module';
 import { UserprofilesModule } from './userprofiles/userprofiles.module';
 import { CommentsModule } from './comments/comments.module';
+import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,10 +15,11 @@ import { CommentsModule } from './comments/comments.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    PostModule,
     PostsModule,
     UserprofilesModule,
     CommentsModule,
+    DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

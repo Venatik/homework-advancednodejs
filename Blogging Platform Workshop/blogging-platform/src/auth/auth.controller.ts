@@ -11,8 +11,9 @@ import {
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -39,3 +40,7 @@ export class AuthController {
     return this.authService.register(registerDto);
   }
 }
+
+// {
+//   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN0ZWZhbkBzdGVmYW4uY29tIiwic3ViIjoxLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU1ODc2OTMsImV4cCI6MTcxNTU5MTI5M30.Q_HwCvRmikNzBGXzGUq1V3pe_SirE34QuEc_hJ0ClaQ"
+// }

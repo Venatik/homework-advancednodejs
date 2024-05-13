@@ -1,26 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Post } from './entities/post.entity';
 
 @Injectable()
 export class PostsService {
-  create(createPostDto: CreatePostDto) {
-    return 'This action adds a new post';
+  constructor(
+    @InjectRepository(Post)
+    private postRepository: Repository<Post>,
+  ) {}
+
+  async findAll(): Promise<Post[]> {
+    return this.postRepository.find();
   }
 
-  findAll() {
-    return `This action returns all posts`;
+  async findOne(id: number): Promise<Post> {
+    return this.postRepository.findOneBy({ id });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
+  async create(createPostDto: CreatePostDto): Promise<Post> {
+    const post = this.postRepository.create(createPostDto);
+    await this.postRepository.save(post);
+    return post;
   }
 
-  update(id: number, updatePostDto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+  async update(id: number, updatePostDto: UpdatePostDto): Promise<Post> {
+    let post = await this.postRepository.findOneBy({ id });
+    post = this.postRepository.merge(post, updatePostDto);
+    await this.postRepository.save(post);
+    return post;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} post`;
+  async remove(id: number): Promise<void> {
+    await this.postRepository.delete(id);
   }
 }
