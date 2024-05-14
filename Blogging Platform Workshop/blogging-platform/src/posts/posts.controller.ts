@@ -51,7 +51,7 @@ export class PostsController {
 
   @ApiOperation({ summary: 'Creates a new post.' })
   @ApiOkResponse({
-    type: [Posts],
+    type: Posts,
     description: 'Post created successfully.',
   })
   @ApiBody({ type: CreatePostDto })
@@ -63,7 +63,7 @@ export class PostsController {
 
   @ApiOperation({ summary: 'Updates a post.' })
   @ApiOkResponse({
-    type: [Posts],
+    type: Posts,
     description: 'Post updated successfully.',
   })
   @Patch(':id')
@@ -73,7 +73,7 @@ export class PostsController {
 
   @ApiOperation({ summary: 'Deletes a post.' })
   @ApiOkResponse({
-    type: [Posts],
+    type: Posts,
     description: 'Post deleted successfully.',
   })
   @Delete(':id')

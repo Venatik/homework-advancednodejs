@@ -21,7 +21,10 @@ export class UserprofilesService {
   }
 
   async findOne(id: number): Promise<Userprofile> {
-    return this.userprofileRepository.findOneBy({ id });
+    return this.userprofileRepository.findOne({
+      where: { id },
+      relations: { user: true },
+    });
   }
 
   async create(
